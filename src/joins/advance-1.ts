@@ -5,8 +5,10 @@ import { getClient } from "../config";
 async function getUserAndTodosWithJoin(userId: number) {
     const client = await getClient();
 
+
+    // basiclly select all fields form users(users.*) and description, title, done from todos
     const joinQuery = `
-        SELECT users.*, todos.title, todos.description, todos.done
+        SELECT users.*, todos.title, todos.description, todos.done             
         FROM users
         LEFT JOIN todos ON users.id = todos.user_id
         WHERE users.id = $1;

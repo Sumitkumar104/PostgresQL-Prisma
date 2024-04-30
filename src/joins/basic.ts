@@ -1,5 +1,7 @@
 import { getClient } from "../config";
 
+// Easy way to do task bhut here we call our daatbase two times which is bad .
+
 async function getUserAndTodosSeparateQueries(userId: number) {
     const client = await getClient();
 
