@@ -1,4 +1,4 @@
-import { getClient } from "../config";
+import { getClient } from "../../config";
 
 async function getAllTodosWithUserDetails() {
     const client = await getClient();

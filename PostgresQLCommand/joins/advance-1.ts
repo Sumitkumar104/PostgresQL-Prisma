@@ -1,4 +1,4 @@
-import { getClient } from "../config";
+import { getClient } from "../../config";
 
 // Get all todos for a give user
 // This needs to ensure that every user comes atleast once

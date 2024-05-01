@@ -1,4 +1,4 @@
-import { getClient } from "../config";
+import { getClient } from "../../config";
 
 // Easy way to do task bhut here we call our daatbase two times which is bad .
 
