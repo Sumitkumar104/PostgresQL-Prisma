@@ -4,6 +4,14 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+
+// ----------------------------- Migration ------------------------------------
+// whenever I update my schema I need to run the command npx prisma migrate dev --name dfdeffdf . so that a migration file will create for this .
+// ----- defination of migration file-----
+// In Prisma, migration files are used to manage changes to your database schema over time. These files contain instructions on how to apply or revert database schema changes, such as creating new tables, modifying existing tables, or adding indexes.
+// When you make changes to your Prisma schema, such as adding a new model or updating a field, Prisma generates a migration file to represent those changes. This migration file captures the SQL commands needed to apply the schema changes to your database. Additionally, Prisma automatically applies these migration files to your database when you run the prisma migrate command, ensuring that your database schema stays in sync with your Prisma schema.
+// Migration files in Prisma typically have names that include a timestamp to indicate when the migration was created, along with a brief description of the changes it represents. For example, a migration file might be named something like 20220429120000_create_users_table.sql.
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,7 +21,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 // Now we  write Prisma Schema for our tables
 model User{
   id Int @id @default(autoincrement())
@@ -21,6 +28,7 @@ model User{
   lastName String?
   email String @unique
   password String
+  todo Todo[]
 
 }
 
@@ -30,4 +38,5 @@ model Todo{
   content String
   published Boolean @default(false)
   authorId Int
+  user User @relation(fields:[authorId],references: [id])    // there is relation between the authorId in Todo and id in User.
 }
